@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundSpace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!--- PLAYLIST SIDEBAR --->
+    <div class="side-nav-playlist">
+        <h2>Your Library</h2>
+        <h3>Songs</h3>
+        <ul class="playlist">
+            <li><button id="playEbal">Ebal - DLP</button></li>
+            <li><button id="playMany">Nuj de cn e - Many Men</button></li>
+            <li><button id="playCiocolata">Ciocolata - TzAnCa</button></li>
+            <li><button id="playPoppa">Big Poppa - Doamne ajuta</button></li>
+            <li><button id="playDelta">Cocks - Alo delta force</button></li>
+            <li><button id="playLatn">La tn si la bani - Marinica Biju</button></li>
+            <li><button id="playNam">Svantz - Daca n-ai svant</button></li>
+        </ul>
+    </div>
+
+    <main class="container">
+        <section id="addsong">
+            <audio controls id="audioPlayer">
+                Your browser does not support the audio tag.
+            </audio>
+            <div id="songTitle"></div> 
+
+            <div id="lyricsContainer">
+                <div id="lyrics"></div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const audioPlayer = document.getElementById('audioPlayer');
+            // Songs
+            const playEbalButton = document.getElementById('playEbal');
+            const playManyButton = document.getElementById('playMany');
+            const playCiocolataButton = document.getElementById('playCiocolata');
+            const playPoppaButton = document.getElementById('playPoppa');
+            const playDeltaButton = document.getElementById('playDelta');
+            const playLatnButton = document.getElementById('playLatn');
+            const playNamButton = document.getElementById('playNam');
+
+
+            const playAnotherSongButton = document.getElementById('playAnotherSong');
+            const songTitle = document.getElementById('songTitle');
+            const lyricsContainer = document.getElementById('lyricsContainer');
+            const lyricsDisplay = document.getElementById('lyrics');
+
+            playEbalButton.addEventListener('click', function () {
+                playSong('Ebal - DLP', 'Songs/ebal.mp3');
+            });
+            playManyButton.addEventListener('click', function () {
+                playSong('Nuj de cn e - Many Men', 'Songs/manymen.mp3');
+            });
+            playCiocolataButton.addEventListener('click', function () {
+                playSong('Ciocolata - TzAnCa', 'Songs/cico.mp3');
+            });
+            playPoppaButton.addEventListener('click', function () {
+                playSong('Big Poppa - Doamne ajuta', 'Songs/bigpopa.mp3');
+            });
+            playDeltaButton.addEventListener('click', function () {
+                playSong('Cocks - Alo delta force', 'Songs/bazabaza.mp3');
+            });
+            playLatnButton.addEventListener('click', function () {
+                playSong('La tn si la bani - Marinica Biju', 'Songs/latnsilabani.mp3');
+            });
+            playNamButton.addEventListener('click', function () {
+                playSong('Svantz - Daca n-ai svant', 'Songs/dacanam.mp3');
+            });
+            function playSong(songTitle, songPath) {
+                audioPlayer.src = songPath;
+                audioPlayer.load();
+                audioPlayer.play();
+                updateSongInfo(songTitle);
+            }
+
+            function updateSongInfo(title) {
+                songTitle.textContent = title;
+                // Dacă ai informații suplimentare despre melodie, le poți adăuga aici
+            }
+        });
+    </script>
+</body>
+</html>
